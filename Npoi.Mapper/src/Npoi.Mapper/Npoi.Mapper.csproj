@@ -9,7 +9,7 @@
     <PackageProjectUrl>https://donnytian.github.io/Npoi.Mapper/</PackageProjectUrl>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Version>6.2.3</Version>
-    <PackageReleaseNotes>Support net472, net6.0, net8.0, and net10.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Support net472, net8.0, and net10.0</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>npoi.mapper.snk</AssemblyOriginatorKeyFile>
     <TargetFrameworks>net472;net8.0;net10.0</TargetFrameworks>
@@ -34,8 +34,16 @@
     <PackageReference Include="NPOI" Version="2.7.6" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.6" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'net10.0'">
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="8.0.3" />
+  </ItemGroup>
+
   <ItemGroup Label="SourceLink">
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.201" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.203" PrivateAssets="All" />
   </ItemGroup>
   
 </Project>
